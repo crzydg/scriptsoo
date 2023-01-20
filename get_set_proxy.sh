@@ -25,9 +25,9 @@ elif echo "$release_file" | grep -q "SUSE"; then
     proxy_port=$(echo "$proxy_line" | cut -d ':' -f 3)
 elif echo "$release_file" | grep -q "Red Hat"; then
     # RedHat
-    proxy_line=$(grep -o 'http_proxy=.*' /etc/rhsm/rhsm.conf)
-    proxy=$(echo "$proxy_line" | cut -d '=' -f 2 | cut -d ':' -f 1)
-    proxy_port=$(echo "$proxy_line" | cut -d ':' -f 2)
+    proxy_line=$(grep -o 'http_proxy=.*' )
+    proxy=$(grep -o proxy_hostname /etc/rhsm/rhsm.conf |awk -F "=" '{print $2}')
+    proxy_port=$(grep -o proxy_port /etc/rhsm/rhsm.conf |awk -F "=" '{print $2}')
 elif echo "$release_file" | grep -q "CentOS"; then
     # CentOS
     proxy_line=$(grep -o 'http_proxy=.*' /etc/rhsm/rhsm.conf)
