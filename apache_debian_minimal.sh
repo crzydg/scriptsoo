@@ -37,9 +37,20 @@ sudo echo "
   SSLCertificateKeyFile /etc/ssl/private/apache-selfsigned.key
 
   <Directory /var/www/html>
-    AllowOverride All
+    AllowOverride None
     Require all granted
   </Directory>
+
+  ServerSignature Off
+  Header unset ETag
+  FileETag None
+
+  LimitRequestFields 50
+  LimitRequestLine 8190
+  LimitRequestBody 10240000
+  LimitXMLRequestBody 1048576
+
+  TraceEnable off
 
   <IfModule mod_security2.c>
     SecRuleEngine On
@@ -59,7 +70,7 @@ sudo echo "
   SSLHonorCipherOrder on
   SSLCompression off
   SSLDHParam /etc/ssl/certs/dhparam.pem
-</VirtualHost>
+</Virtual
 " | sudo tee /etc/apache2/sites-available/default-ssl.conf
 sudo a2ensite default-ssl.conf
 
