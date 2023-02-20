@@ -30,18 +30,22 @@ if [ -z "${relayhost}" ]; then
 fi
 
 # Install Postfix and mailutils
-sudo apt update
-sudo apt install -y postfix mailutils
+apt update
+apt install -y postfix mailutils
 
 # Backup the original Postfix configuration file
-sudo cp /etc/postfix/main.cf /etc/postfix/main.cf.bak
+cp /etc/postfix/main.cf /etc/postfix/main.cf.bak
 
 # Edit the Postfix configuration file with sed
-sudo sed -i -e "s/^relayhost =.*/relayhost = ${relayhost}/" \
+sed -i -e "s/^relayhost =.*/relayhost = ${relayhost}/" \
 -e "/^#mynetworks =/a mynetworks = ${mynetworks}" /etc/postfix/main.cf
 
+# Remove commented and blank lines from the configuration file
+sed -i '/^#/d' /etc/postfix/main.cf
+sed -i '/^$/d' /etc/postfix/main.cf
+
 # Restart Postfix
-sudo service postfix restart
+service postfix restart
 
 # Test the mail relay
 if [ -z "${test_email}" ]; then
