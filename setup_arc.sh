@@ -1,8 +1,4 @@
 #!/bin/bash
-# Author: Gregor Bausch
-# Company: Kesinlik Ltd.
-# Date: 2023/01/17
-# email: gregor@kesinlik.com
 
 # create a dedicated user account for the Azure Arc Agent
 password=$(tr -dc A-Za-z0-9 < /dev/urandom | head -c 16)

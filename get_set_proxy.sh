@@ -1,8 +1,4 @@
 #!/bin/bash
-# Author: Gregor Bausch
-# Company: Kesinlik Ltd.
-# Date: 2023/01/18
-# email: gregor@kesinlik.com
 
 # Read the /etc/*-release file
 release_file=`cat /etc/*-release`

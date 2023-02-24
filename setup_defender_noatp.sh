@@ -1,8 +1,4 @@
 #!/bin/bash
-# Author: Gregor Bausch
-# Company: Kesinlik Ltd.
-# Date: 2023/01/17
-# email: gregor@kesinlik.com
 
 # Detect the Linux distribution
 distribution=$(lsb_release -is)

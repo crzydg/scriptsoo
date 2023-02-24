@@ -1,8 +1,4 @@
 #!/bin/bash
-# Author: Gregor Bausch
-# Company: Kesinlik Ltd.
-# Date: 2023/01/17
-# email: gregor@kesinlik.com
 
 echo "This script installs Microsoft Defender ATP on Linux, detects the Linux distribution, installs the ATP agent, registers the device with ATP, installs the Defender agent and finally registers the agent with Microsoft"
 

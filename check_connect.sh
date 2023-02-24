@@ -1,8 +1,4 @@
 #!/bin/bash
-# Author: Gregor Bausch
-# Company: Kesinlik Ltd.
-# Date: 2023/01/18
-# email: gregor@kesinlik.com
 
 # Check for curl or wget
 if command -v curl &> /dev/null; then

@@ -1,8 +1,4 @@
 #!/bin/bash
-# Author: Gregor Bausch
-# Company: Kesinlik Ltd.
-# Date: 2023/01/18
-# email: gregor@kesinlik.com
 
 # Get the list of remote machines
 echo "Enter the list of remote machines (IP or hostname, separated by space):"
