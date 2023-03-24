@@ -7,9 +7,9 @@ if [ ! -f /var/log/squid/access.log ]; then
     exit 1
 fi
 
-# Generate a report of the top 100 accessed URLs
-echo "Top 100 Accessed URLs:"
-awk '{print $7}' /var/log/squid/access.log | sort | uniq -c | sort -nr | head -n 100
+# Generate a report of the top 100 accessed URLs with the client IP and user-agent
+echo "Top 100 Accessed URLs with Client IP and User-Agent:"
+awk '{print $3, $7, $12}' /var/log/squid/access.log | sort | uniq -c | sort -nr | head -n 100
 echo ""
 
 # Generate a report of the top 100 requestors
