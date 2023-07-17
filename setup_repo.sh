@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # IP addresses to iterate over
-IPs=(192.168.0.1 192.168.0.2 194.31.0.1 194.31.0.2)
+IPs=(192.168.0.1 192.168.0.2)
 
 # Loop over the IP addresses
 for IP in "${IPs[@]}"; do
