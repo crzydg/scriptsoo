@@ -57,29 +57,23 @@ if [[ -n "$listening_ports" ]]; then
   echo "<pre>$listening_ports</pre>" >> "$LOGFILE"
 
   # Check 1: sshd_config
-  if echo "$listening_ports" | grep -q ':22 '; then
-    echo "<h3 id=\"section_1\">1. sshd_config</h3>" >> "$LOGFILE"
-    generate_html_row "1. sshd_config (One Line at a Time)" "$(format_sshd_config)" >> "$LOGFILE"
-  fi
+  echo "<h3 id=\"section_1\">1. sshd_config</h3>" >> "$LOGFILE"
+  generate_html_row "1. sshd_config (One Line at a Time)" "$(format_sshd_config)" >> "$LOGFILE"
 
   # Check 2: User home directories
-  if ps aux | grep -q '[s]shd'; then
-    echo "<h3 id=\"section_2\">2. User home directories</h3>" >> "$LOGFILE"
-    echo "<p><strong>List of User Home Directories:</strong></p>" >> "$LOGFILE"
-    for directory in $(getent passwd | awk -F: '{print $6}'); do
-      permissions=$(stat -c '%a' "$directory")
-      echo "<p>$directory (Permissions: <strong>$permissions</strong>)</p>" >> "$LOGFILE"
-    done
-  fi
+  echo "<h3 id=\"section_2\">2. User home directories</h3>" >> "$LOGFILE"
+  echo "<p><strong>List of User Home Directories:</strong></p>" >> "$LOGFILE"
+  for directory in $(getent passwd | awk -F: '{print $6}'); do
+    permissions=$(stat -c '%a' "$directory")
+    echo "<p>$directory (Permissions: <strong>$permissions</strong>)</p>" >> "$LOGFILE"
+  done
 
   # Check 2a: .ssh directory permissions
-  if ps aux | grep -q '[s]shd'; then
-    echo "<h3 id=\"section_3\">2a. .ssh directory permissions</h3>" >> "$LOGFILE"
-    echo "<p><strong>.ssh Directory Permissions:</strong></p>" >> "$LOGFILE"
-    find /home -type d -name '.ssh' -exec stat -c '%n %a' {} \; | while read -r line; do
-      echo "<p>$line</p>" >> "$LOGFILE"
-    done
-  fi
+  echo "<h3 id=\"section_3\">2a. .ssh directory permissions</h3>" >> "$LOGFILE"
+  echo "<p><strong>.ssh Directory Permissions:</strong></p>" >> "$LOGFILE"
+  find /home -type d -name '.ssh' -exec stat -c '%n %a' {} \; | while read -r line; do
+    echo "<p>$line</p>" >> "$LOGFILE"
+  done
 
   # Check 3: SUID files
   echo "<h3 id=\"section_4\">3. SUID files</h3>" >> "$LOGFILE"
