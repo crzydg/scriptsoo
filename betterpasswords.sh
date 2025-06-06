@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # betterpasswords.sh – secure and speakable passwords + openssl Hash
+# looseley based on https://github.com/mschmitt/Dotfiles/blob/master/Scripts/bin/bestpw
 # requires /usr/share/dict/words 
 
 WORDS="/usr/share/dict/words"
